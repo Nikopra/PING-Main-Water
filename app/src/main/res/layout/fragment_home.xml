@@ -16,7 +16,6 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <TextView
