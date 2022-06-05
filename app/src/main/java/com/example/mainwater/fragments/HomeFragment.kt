@@ -82,14 +82,14 @@ class HomeFragment : Fragment() {
 
 
         lineDataset.setColors(Color.DKGRAY)
-        lineDataset!!.valueTextColor = Color.BLUE
-        lineDataset!!.valueTextSize =12f
+        lineDataset.valueTextColor = Color.BLUE
+        lineDataset.valueTextSize =12f
         Log.d("ITM","test 3")
 
         val xAxis = binding.lineChart.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
 
-        val dateFormatter = SimpleDateFormat("yy/MM/dd")
+        //val dateFormatter = SimpleDateFormat("yy/MM/dd")
         var lastDate = ""
         val formatter = object :  ValueFormatter() {
             override fun getFormattedValue(value: Float): String {
