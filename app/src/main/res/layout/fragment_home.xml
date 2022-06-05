@@ -22,7 +22,7 @@
         android:id="@+id/Logo"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@drawable/_logo_30x30"
+        android:background="@drawable/logo_control"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

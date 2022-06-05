@@ -7,6 +7,14 @@
     android:background="@color/darkGray"
     tools:context=".fragments.DevicesFragment">
 
+    <TextView
+        android:id="@+id/Logo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/logo_control"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Switch
         android:id="@+id/onOffSwitch"
         android:layout_width="wrap_content"
@@ -264,12 +272,5 @@
                 android:textSize="20dp"/>
 
         </LinearLayout>
-
-
-
     </ScrollView>
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
