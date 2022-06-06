@@ -12,6 +12,8 @@ import com.example.mainwater.fragments.DevicesFragment
 import com.example.mainwater.fragments.HomeFragment
 import com.example.mainwater.fragments.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.view.View
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,12 +24,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        replaceFragment(homeFragment)
-        Log.d("ITM","TEST1")
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        replaceFragment(homeFragment)
+        Log.d("ITM","TEST1")
+
+
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener {
             when(it.itemId){

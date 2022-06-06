@@ -14,20 +14,30 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
+import com.github.mikephil.charting.utils.ColorTemplate
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
+import com.github.mikephil.charting.data.BarDataSet
+
+import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.BarData
+
+import android.R
+
+import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
+import android.widget.LinearLayout
+import android.R.attr.data
+import android.content.Context
+import androidx.core.content.ContextCompat
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
-
-private var _binding: FragmentHomeBinding? = null
-// This property is only valid between onCreateView and
-// onDestroyView.
-private val binding get() = _binding!!
 
 /**
  * A simple [Fragment] subclass.
@@ -40,11 +50,13 @@ class HomeFragment : Fragment() {
     private var param2: String? = null
 
     lateinit var linelist: ArrayList<Entry>
-    lateinit var lineDataset: LineDataSet
+    lateinit var lineDataSet: LineDataSet
     lateinit var lineData: LineData
 
-    var entryMap = mutableMapOf<LocalDate,Float>(LocalDate.of(2022,6,1) to 35.2F,
-        LocalDate.of(2022,5,31) to 42.6F,)
+    var entryMap = mutableMapOf<LocalDate,Float>(
+        LocalDate.of(2022, 6, 1) to 35.2F,
+        LocalDate.of(2022, 5, 31) to 10.6F,
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,62 +65,19 @@ class HomeFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
         Log.d("ITM","TEST HomeFragment")
-
-        /*entryMap[LocalDate.of(2022,5,30)]=45.0F
-        entryMap[LocalDate.of(2022,5,29)]=22.4F
-        entryMap[LocalDate.of(2022,5,28)]=3.0F
-        entryMap[LocalDate.of(2022,5,27)]=1.2F*/
-
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val view = binding.root
-        linelist = ArrayList()
-        Log.d("ITM","TEST DATE")
-        for (entry in entryMap) {
-            linelist.add(Entry(dateToFloat(entry.key),entry.value))
-        }
-        lineDataset = LineDataSet(linelist, "consommation d'eau (L)")
-        Log.d("ITM","test1")
-        lineData = LineData(lineDataset)
-        Log.d("ITM","test1.1")
-        binding.lineChart.data=lineData
-        Log.d("ITM","test 2")
-
-
-        lineDataset.setColors(Color.DKGRAY)
-        lineDataset.valueTextColor = Color.BLUE
-        lineDataset.valueTextSize =12f
-        Log.d("ITM","test 3")
-
-        val xAxis = binding.lineChart.xAxis
-        xAxis.position = XAxis.XAxisPosition.BOTTOM
-
-        //val dateFormatter = SimpleDateFormat("yy/MM/dd")
-        var lastDate = ""
-        val formatter = object :  ValueFormatter() {
-            override fun getFormattedValue(value: Float): String {
-                val date = floatToDateString(value)
-                if (date == lastDate){
-                    return ""
-                }
-                lastDate = date
-                return date
-            }
-        }
-        xAxis.valueFormatter = formatter
-        Log.d("ITM","test4")
+        val view: View = inflater.inflate(com.example.mainwater.R.layout.fragment_home,container, false)
         return view
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
     }
 
     companion object {
@@ -131,7 +100,6 @@ class HomeFragment : Fragment() {
             }
     }
 
-
     private fun dateToString(date: LocalDate): String {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         return date.format(formatter)
@@ -139,12 +107,42 @@ class HomeFragment : Fragment() {
     private fun dateStringToFloat(dateString: String): Float{
         val date = SimpleDateFormat("yyyy-MM-dd").parse(dateString)
         return date.time.toFloat()
-
     }
     private fun dateToFloat(date: LocalDate): Float {
         return dateStringToFloat(dateToString(date))
     }
     private fun floatToDateString(miliSec: Float): String{
         return SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(miliSec)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        setupBarChartData()
+    }
+
+    private fun setupBarChartData() {
+        // create BarEntry for Bar Group
+        val bargroup = ArrayList<BarEntry>()
+        bargroup.add(BarEntry(0f, 30f, "0"))
+        bargroup.add(BarEntry(1f, 2f, "1"))
+        bargroup.add(BarEntry(2f, 4f, "2"))
+        bargroup.add(BarEntry(3f, 6f, "3"))
+        bargroup.add(BarEntry(4f, 8f, "4"))
+        bargroup.add(BarEntry(5f, 10f, "5"))
+        bargroup.add(BarEntry(6f, 22f, "6"))
+        bargroup.add(BarEntry(7f, 12.5f, "7"))
+        bargroup.add(BarEntry(8f, 22f, "8"))
+        bargroup.add(BarEntry(9f, 32f, "9"))
+        bargroup.add(BarEntry(10f, 54f, "10"))
+        bargroup.add(BarEntry(11f, 28f, "11"))
+
+        // creating dataset for Bar Group
+        val barDataSet = BarDataSet(bargroup, "Test aja")
+
+        barDataSet.color = ContextCompat.getColor(this.requireContext(), R.color.white)
+
+        val data = BarData(barDataSet)
+
     }
 }
