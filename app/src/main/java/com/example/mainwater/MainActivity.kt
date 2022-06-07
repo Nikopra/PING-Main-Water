@@ -28,11 +28,8 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         replaceFragment(homeFragment)
         Log.d("ITM","TEST1")
-
-
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener {
             when(it.itemId){
@@ -48,11 +45,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun replaceFragment(fragment: Fragment){
         if (fragment!=null){
-
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, fragment)
             transaction.commit()
         }
     }
-
 }

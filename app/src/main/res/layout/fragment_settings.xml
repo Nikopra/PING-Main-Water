@@ -4,19 +4,149 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkGray"
     tools:context=".fragments.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="63dp"
+        android:layout_height="70dp"
+        android:background="@drawable/logo_control"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="47dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@drawable/profil" />
+
     <TextView
-        android:id="@+id/settings"
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hello settings fragment"
-        android:textSize="36sp"
+        android:text="Nom: Duguay"
+        android:textColor="@color/white"
+        android:layout_marginLeft="15dp"
+        app:layout_constraintTop_toTopOf="@id/imageView5"
+        app:layout_constraintLeft_toRightOf="@id/imageView5"
+        tools:layout_editor_absoluteX="191dp"
+        tools:layout_editor_absoluteY="58dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prénom: Michelle"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/textView7"
+        app:layout_constraintLeft_toLeftOf="@id/textView7"/>
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="85dp"
+        android:layout_height="26dp"
+        android:text="Modifier"
+        android:textColor="@color/white"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="30dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        />
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email: michelle.duguay@gmail.com"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/textView11"
+        app:layout_constraintLeft_toLeftOf="@id/textView11" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="124dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="Password: 1234"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/textView13"
+        app:layout_constraintLeft_toLeftOf="@id/textView13" />
+
+
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="123dp"
+        android:layout_height="46dp"
+        android:text="Langue"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="-30dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView5" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="175dp"
+        android:layout_height="46dp"
+        android:text="Confidentialité"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton"
+        app:layout_constraintLeft_toLeftOf="@+id/radioButton" />
+
+    <RadioButton
+        android:id="@+id/radioButton3"
+        android:layout_width="123dp"
+        android:layout_height="46dp"
+        android:text="Notifications"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton2"
+        app:layout_constraintLeft_toLeftOf="@+id/radioButton2" />
+
+    <RadioButton
+        android:id="@+id/radioButton4"
+        android:layout_width="121dp"
+        android:layout_height="49dp"
+        android:text="Thème"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton3"
+        app:layout_constraintLeft_toLeftOf="@+id/radioButton3" />
+
+
+
+    <RadioButton
+        android:id="@+id/radioButton5"
+        android:layout_width="123dp"
+        android:layout_height="46dp"
+        android:text="Compte"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton4"
+        app:layout_constraintLeft_toLeftOf="@+id/radioButton4" />
+
+    <RadioButton
+        android:id="@+id/radioButton6"
+        android:layout_width="123dp"
+        android:layout_height="46dp"
+        android:text="Infos"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton5"
+        app:layout_constraintLeft_toLeftOf="@+id/radioButton5" />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
